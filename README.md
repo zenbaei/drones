@@ -1,3 +1,6 @@
+- Run the App:
+	./mvnw spring-boot:run
+
 - Application runs on default port localhost:8080
 
 - In memory db can be accessed over 8080/h2-console 
@@ -16,7 +19,8 @@
 	Available Drones for loading: GET -> /api/drones?status=IDLE
 
 
-- to run integration tests: ./mvnw verify -Pfailsafe
+- to run integration tests: 
+	./mvnw verify -Pfailsafe
 	
 Sorry I was busy and didn't have enough time to implement the Executor to log battery status and prevent loading 
 for drones with 25% remaing battery.
