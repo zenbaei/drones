@@ -1,4 +1,4 @@
-package com.zenbaei.drones.domain.drone;
+package com.zenbaei.drones.domain.drone.controller;
 
 import java.util.List;
 
@@ -10,7 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.zenbaei.drones.domain.drone.entity.Drone;
+import com.zenbaei.drones.domain.drone.entity.Drone.Status;
+import com.zenbaei.drones.domain.drone.service.DroneService;
+
 
 @RestController
 @RequestMapping("/api/drones")
@@ -23,9 +29,18 @@ public class DroneRestController {
 	}
 
     @GetMapping
-    public List<Drone> findAll() {
+    public List<Drone> findAll(@RequestParam(required = false) Status status) {
+    	if (status != null) {
+    		return service.findByStatus(status);
+    	}
         return service.findAll();
     }
+    
+    @GetMapping("/{id}")
+    public Drone findById(@PathVariable Long id) {
+        return service.getByIdEagerly(id);
+    }
+    
     
     @PostMapping
     public Drone save(@Valid @RequestBody Drone drone) {

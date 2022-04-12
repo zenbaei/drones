@@ -2,6 +2,9 @@ package com.zenbaei.drones.common.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -22,6 +25,12 @@ public class ControllerExceptionHandler {
 	        errors.put(fieldName, errorMessage);
 	    });
 	    return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(EntityNotFoundException.class)
+	public ResponseEntity<String> handleEntityNotFound(
+	  EntityNotFoundException ex) {
+	    return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
 	}
 
 }

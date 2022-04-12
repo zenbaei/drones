@@ -24,8 +24,13 @@ public abstract class AbstractService<T> implements BaseService<T> {
 	}
 	
 	@Override
-	public Optional<T> findById(Long id) {
+	public Optional<T> findById(long id) {
 		return this.repository.findById(id);
+	}
+	
+	@Override
+	public T getById(long id) {
+		return this.repository.getById(id);
 	}
 
 }

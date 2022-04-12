@@ -1,9 +1,11 @@
-package com.zenbaei.drones.domain.drone;
+package com.zenbaei.drones.domain.drone.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Set;
+
 import javax.validation.ConstraintViolation;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +13,7 @@ import com.zenbaei.drones.test.BaseValidationTest;
 
 public class DroneTest extends BaseValidationTest {
 
-	
+
 	@Test
 	public void whenSerialEqual100_thenNoViolations() {
 		Drone drn = new Drone();
@@ -19,7 +21,7 @@ public class DroneTest extends BaseValidationTest {
 		Set<ConstraintViolation<Drone>> violations = validator.validate(drn);
 		assertThat(violations.size()).isEqualTo(0);
 	}
-	
+
 	@Test
 	public void whenSerialExceeds100_thenViolationsShouldExist() {
 		Drone drn = new Drone();

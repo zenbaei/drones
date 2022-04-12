@@ -1,4 +1,4 @@
-package com.zenbaei.drones.domain.drone;
+package com.zenbaei.drones.domain.drone.entity;
 
 import java.util.List;
 
@@ -8,25 +8,24 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
-import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.zenbaei.drones.domain.medication.Medication;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.zenbaei.drones.domain.medication.entity.Medication;
 
 @Entity
 @Table(name = "DRONES")
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Drone {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotEmpty
 	@Length(max = 100)
 	private String serial;
 
@@ -42,7 +41,8 @@ public class Drone {
 	@Max(100)
 	private Integer battery = 100;
 
-	@OneToMany(mappedBy = "drone")
+	@OneToMany
+	@JoinColumn(name = "drone_id")
 	private List<Medication> medications;
 
 	public Long getId() {

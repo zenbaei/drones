@@ -9,6 +9,8 @@ public interface BaseService<T> {
 	
 	T save(T entity);
 	
-	Optional<T> findById(Long id);
+	Optional<T> findById(long id);
+	
+	T getById(long id);
 
 }
