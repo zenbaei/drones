@@ -1,4 +1,4 @@
-package com.zenbaei.drones;
+package com.zenbaei.drones.test;
 
 import javax.validation.Validation;
 import javax.validation.Validator;

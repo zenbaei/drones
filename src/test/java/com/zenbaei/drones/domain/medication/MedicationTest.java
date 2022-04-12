@@ -1,11 +1,13 @@
-package com.zenbaei.drones.medication;
+package com.zenbaei.drones.domain.medication;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Set;
 import javax.validation.ConstraintViolation;
 import org.junit.jupiter.api.Test;
-import com.zenbaei.drones.BaseValidationTest;
+
+import com.zenbaei.drones.domain.medication.Medication;
+import com.zenbaei.drones.test.BaseValidationTest;
 
 public class MedicationTest extends BaseValidationTest {
 

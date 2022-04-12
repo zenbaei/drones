@@ -1,4 +1,4 @@
-package com.zenbaei.drones.drone;
+package com.zenbaei.drones.domain.drone;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,7 +6,8 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
-import com.zenbaei.drones.BaseValidationTest;
+
+import com.zenbaei.drones.test.BaseValidationTest;
 
 public class DroneTest extends BaseValidationTest {
 
